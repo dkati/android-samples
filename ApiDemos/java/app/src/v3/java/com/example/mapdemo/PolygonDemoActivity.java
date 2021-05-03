@@ -150,14 +150,18 @@ public class PolygonDemoActivity extends AppCompatActivity
                 strokeAlphaBar.getProgress(), new float[]{strokeHueBar.getProgress(), 1, 1});
 
         // Create a rectangle with two rectangular holes.
-        mutablePolygon = map.addPolygon(new PolygonOptions()
-                .addAll(createRectangle(CENTER, 5, 5))
-                .addHole(createRectangle(new LatLng(-22, 128), 1, 1))
-                .addHole(createRectangle(new LatLng(-18, 133), 0.5, 1.5))
-                .fillColor(fillColorArgb)
-                .strokeColor(strokeColorArgb)
-                .strokeWidth(strokeWidthBar.getProgress())
-                .clickable(clickabilityCheckbox.isChecked()));
+        LatLng s = CENTER;
+        for (int i=0;i<400;i++) {
+            s= new LatLng(s.latitude + 0.5, s.longitude + 0.5);
+            mutablePolygon = map.addPolygon(new PolygonOptions()
+                    .addAll(createRectangle(s, 5, 5))
+                    //.addHole(createRectangle(new LatLng(-22, 128), 1, 1))
+                    //.addHole(createRectangle(new LatLng(-18, 133), 0.5, 1.5))
+                    .fillColor(fillColorArgb)
+                    .strokeColor(strokeColorArgb)
+                    .strokeWidth(strokeWidthBar.getProgress())
+                    .clickable(clickabilityCheckbox.isChecked()));
+        }
 
         fillHueBar.setOnSeekBarChangeListener(this);
         fillAlphaBar.setOnSeekBarChangeListener(this);
