@@ -18,6 +18,7 @@ import com.google.android.libraries.maps.GoogleMap;
 import com.google.android.libraries.maps.OnMapReadyCallback;
 import com.google.android.libraries.maps.SupportMapFragment;
 import com.google.android.libraries.maps.model.LatLng;
+import com.google.android.libraries.maps.model.MapStyleOptions;
 import com.google.android.libraries.maps.model.MarkerOptions;
 
 import android.os.Bundle;
@@ -46,5 +47,6 @@ public class BasicMapDemoActivity extends AppCompatActivity implements OnMapRead
     @Override
     public void onMapReady(GoogleMap map) {
         map.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(getBaseContext(), R.raw.aubergine));
     }
 }
